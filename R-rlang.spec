@@ -8,7 +8,7 @@
 
 Name:             R-%{packname}
 Version:          0.2.0
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -83,5 +83,8 @@ args="$args --no-tests"
 
 
 %changelog
+* Wed May 16 2018 Tom Callaway <spot@fedoraproject.org> - 0.2.0-2
+- rebuild for R 3.5.0
+
 * Sun Mar 25 2018 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.2.0-1
 - initial package for Fedora
