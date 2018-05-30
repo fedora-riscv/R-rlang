@@ -7,8 +7,8 @@
 %global with_loop 0
 
 Name:             R-%{packname}
-Version:          0.2.0
-Release:          2%{?dist}
+Version:          0.2.1
+Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -18,15 +18,20 @@ Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{version}.
 # Here's the R view of the dependencies world:
 # Depends:
 # Imports:
-# Suggests:  R-crayon R-knitr R-methods R-pillar R-rmarkdown R-testthat R-covr
+# Suggests:  R-crayon, R-knitr, R-methods, R-pillar, R-rmarkdown >= 0.2.65, R-testthat, R-covr
 # LinkingTo:
 # Enhances:
 
-Suggests:         R-crayon R-methods R-pillar
-BuildRequires:    R-devel tex(latex)
-BuildRequires:    R-crayon R-methods
+Suggests:         R-crayon
+Suggests:         R-methods
+Suggests:         R-pillar
+BuildRequires:    R-devel
+BuildRequires:    tex(latex)
+BuildRequires:    R-crayon
+BuildRequires:    R-methods
 %if %{with_doc}
-BuildRequires:    R-knitr, R-rmarkdown >= 0.2.65
+BuildRequires:    R-knitr
+BuildRequires:    R-rmarkdown >= 0.2.65
 %endif
 %if %{with_loop}
 BuildRequires:    R-testthat >= 2.0.0
@@ -83,6 +88,9 @@ args="$args --no-tests"
 
 
 %changelog
+* Wed May 30 2018 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.2.1-1
+- Update to latest version
+
 * Wed May 16 2018 Tom Callaway <spot@fedoraproject.org> - 0.2.0-2
 - rebuild for R 3.5.0
 
