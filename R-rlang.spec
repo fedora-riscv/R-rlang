@@ -7,8 +7,8 @@
 %global with_loop 0
 
 Name:             R-%{packname}
-Version:          0.2.1
-Release:          2%{?dist}
+Version:          0.2.2
+Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -88,6 +88,9 @@ args="$args --no-tests"
 
 
 %changelog
+* Sun Aug 19 2018 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.2.2-1
+- Update to latest version
+
 * Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
