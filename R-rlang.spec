@@ -12,7 +12,7 @@ Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
-URL:              https://cran.r-project.org/web/packages/%{packname}/index.html
+URL:              https://CRAN.R-project.org/package=%{packname}
 Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{version}.tar.gz
 
 # Here's the R view of the dependencies world:
