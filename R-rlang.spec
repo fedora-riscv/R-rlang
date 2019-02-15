@@ -1,14 +1,12 @@
 %global packname  rlang
 %global rlibdir  %{_libdir}/R/library
 
-# rmarkdown is not available.
-%global with_doc 0
 # pillar and testthat requires rlang.
 %global with_loop 0
 
 Name:             R-%{packname}
-Version:          0.2.2
-Release:          2%{?dist}
+Version:          0.3.1
+Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -18,7 +16,7 @@ Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{version}.
 # Here's the R view of the dependencies world:
 # Depends:
 # Imports:
-# Suggests:  R-crayon, R-knitr, R-methods, R-pillar, R-rmarkdown >= 0.2.65, R-testthat, R-covr
+# Suggests:  R-crayon, R-magrittr, R-methods, R-pillar, R-testthat >= 2.0.0, R-covr
 # LinkingTo:
 # Enhances:
 
@@ -28,14 +26,11 @@ Suggests:         R-pillar
 BuildRequires:    R-devel
 BuildRequires:    tex(latex)
 BuildRequires:    R-crayon
+BuildRequires:    R-magrittr
 BuildRequires:    R-methods
-%if %{with_doc}
-BuildRequires:    R-knitr
-BuildRequires:    R-rmarkdown >= 0.2.65
-%endif
 %if %{with_loop}
-BuildRequires:    R-testthat >= 2.0.0
 BuildRequires:    R-pillar
+BuildRequires:    R-testthat >= 2.0.0
 %endif
 
 %description
@@ -61,16 +56,11 @@ rm -f %{buildroot}%{rlibdir}/R.css
 
 
 %check
-%if !%{with_doc} || !%{with_loop}
-export _R_CHECK_FORCE_SUGGESTS_=0
+%if %{with_loop}
+%{_bindir}/R CMD check %{packname}
+%else
+_R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 %endif
-%if !%{with_doc}
-args=--ignore-vignettes
-%endif
-%if !%{with_loop}
-args="$args --no-tests"
-%endif
-%{_bindir}/R CMD check %{packname} ${args}
 
 
 %files
@@ -88,6 +78,9 @@ args="$args --no-tests"
 
 
 %changelog
+* Fri Feb 15 2019 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.3.1-1
+- Update to latest version
+
 * Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
