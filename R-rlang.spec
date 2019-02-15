@@ -1,8 +1,8 @@
+# When we are bootstrapping, we drop some dependencies, and/or build time tests.
+%{?_with_bootstrap: %global bootstrap 1}
+
 %global packname  rlang
 %global rlibdir  %{_libdir}/R/library
-
-# pillar and testthat requires rlang.
-%global with_loop 0
 
 Name:             R-%{packname}
 Version:          0.3.1
@@ -28,7 +28,7 @@ BuildRequires:    tex(latex)
 BuildRequires:    R-crayon
 BuildRequires:    R-magrittr
 BuildRequires:    R-methods
-%if %{with_loop}
+%if ! 0%{?bootstrap}
 BuildRequires:    R-pillar
 BuildRequires:    R-testthat >= 2.0.0
 %endif
@@ -56,7 +56,8 @@ rm -f %{buildroot}%{rlibdir}/R.css
 
 
 %check
-%if %{with_loop}
+export LANG=C.UTF-8
+%if ! 0%{?bootstrap}
 %{_bindir}/R CMD check %{packname}
 %else
 _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
@@ -80,6 +81,7 @@ _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 %changelog
 * Fri Feb 15 2019 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.3.1-1
 - Update to latest version
+- Enable tests
 
 * Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
