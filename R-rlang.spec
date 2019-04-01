@@ -5,7 +5,7 @@
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.3.2
+Version:          0.3.3
 Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
@@ -16,7 +16,7 @@ Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{version}.
 # Here's the R view of the dependencies world:
 # Depends:
 # Imports:
-# Suggests:  R-crayon, R-magrittr, R-methods, R-pillar, R-testthat >= 2.0.0, R-covr
+# Suggests:  R-covr, R-crayon, R-magrittr, R-methods, R-pillar, R-rmarkdown, R-testthat >= 2.0.0
 # LinkingTo:
 # Enhances:
 
@@ -30,6 +30,7 @@ BuildRequires:    R-magrittr
 BuildRequires:    R-methods
 %if ! 0%{?bootstrap}
 BuildRequires:    R-pillar
+BuildRequires:    R-rmarkdown
 BuildRequires:    R-testthat >= 2.0.0
 %endif
 
@@ -42,7 +43,7 @@ system, and core 'Tidyverse' features like tidy evaluation.
 %setup -q -c -n %{packname}
 
 # Don't need coverage; it's not packaged either.
-sed -i 's/, covr//g' %{packname}/DESCRIPTION
+sed -i 's/covr, //g' %{packname}/DESCRIPTION
 
 
 %build
@@ -79,6 +80,9 @@ _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 
 
 %changelog
+* Mon Apr 01 2019 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.3.3-1
+- Update to latest version
+
 * Fri Mar 22 2019 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.3.2-1
 - Update to latest version
 
