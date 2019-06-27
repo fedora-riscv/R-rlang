@@ -5,7 +5,7 @@
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.3.4
+Version:          0.4.0
 Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
@@ -80,6 +80,9 @@ _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 
 
 %changelog
+* Thu Jun 27 2019 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.0-1
+- Update to latest version
+
 * Sun Apr 07 2019 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.3.4-1
 - Update to latest version
 
