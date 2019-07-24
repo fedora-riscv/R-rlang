@@ -6,7 +6,7 @@
 
 Name:             R-%{packname}
 Version:          0.4.0
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -80,6 +80,9 @@ _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 
 
 %changelog
+* Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
 * Thu Jun 27 2019 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.0-1
 - Update to latest version
 
