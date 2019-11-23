@@ -1,5 +1,5 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
-%bcond_with bootstrap
+%bcond_without bootstrap
 
 %global packname  rlang
 %global rlibdir  %{_libdir}/R/library
