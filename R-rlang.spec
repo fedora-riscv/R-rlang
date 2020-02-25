@@ -1,27 +1,29 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
 %bcond_without bootstrap
 
-%global packname  rlang
+%global packname rlang
+%global packver  0.4.4
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.4.2
+Version:          0.4.4
 Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
 URL:              https://CRAN.R-project.org/package=%{packname}
-Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{version}.tar.gz
+Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{packver}.tar.gz
 
 # Here's the R view of the dependencies world:
 # Depends:
 # Imports:
-# Suggests:  R-cli, R-covr, R-crayon, R-magrittr, R-methods, R-pillar, R-rmarkdown, R-testthat >= 2.3.0
+# Suggests:  R-cli, R-covr, R-crayon, R-glue, R-magrittr, R-methods, R-pillar, R-rmarkdown, R-testthat >= 2.3.0
 # LinkingTo:
 # Enhances:
 
 Suggests:         R-cli
 Suggests:         R-crayon
+Suggests:         R-glue
 Suggests:         R-magrittr
 Suggests:         R-methods
 Suggests:         R-pillar
@@ -31,6 +33,7 @@ BuildRequires:    R-devel
 BuildRequires:    tex(latex)
 BuildRequires:    R-cli
 BuildRequires:    R-crayon
+BuildRequires:    R-glue
 BuildRequires:    R-magrittr
 BuildRequires:    R-methods
 %if %{without bootstrap}
@@ -82,9 +85,13 @@ _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 %{rlibdir}/%{packname}/help
 %dir %{rlibdir}/%{packname}/libs
 %{rlibdir}/%{packname}/libs/%{packname}.so
+%{rlibdir}/%{packname}/backtrace-ver
 
 
 %changelog
+* Mon Feb 24 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.4-1
+- Update to latest version
+
 * Sat Nov 23 2019 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.2-1
 - Update to latest version
 
