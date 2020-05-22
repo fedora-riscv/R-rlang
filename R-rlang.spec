@@ -2,11 +2,11 @@
 %bcond_without bootstrap
 
 %global packname rlang
-%global packver  0.4.5
+%global packver  0.4.6
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.4.5
+Version:          0.4.6
 Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
@@ -91,6 +91,9 @@ _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 
 
 %changelog
+* Thu May 21 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.6-1
+- Update to latest version
+
 * Mon Mar 02 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.5-1
 - Update to latest version
 
