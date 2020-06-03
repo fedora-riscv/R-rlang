@@ -1,5 +1,5 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
-%bcond_with bootstrap
+%bcond_without bootstrap
 
 %global packname rlang
 %global packver  0.4.6
@@ -82,6 +82,10 @@ _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 
 
 %changelog
+* Wed Jun  3 2020 Tom Callaway <spot@fedoraproject.org> - 0.4.6-2
+- bootstrap on
+- rebuild for R 4
+
 * Thu May 21 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.6-1
 - Update to latest version
 
