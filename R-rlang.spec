@@ -1,5 +1,5 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
-%bcond_without bootstrap
+%bcond_with bootstrap
 
 %global packname rlang
 %global packver  0.4.6
@@ -7,7 +7,7 @@
 
 Name:             R-%{packname}
 Version:          0.4.6
-Release:          2%{?dist}
+Release:          3%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -82,6 +82,9 @@ _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 
 
 %changelog
+* Sun Jun  7 2020 Tom Callaway <spot@fedoraproject.org> - 0.4.6-3
+- bootstrap off
+
 * Wed Jun  3 2020 Tom Callaway <spot@fedoraproject.org> - 0.4.6-2
 - bootstrap on
 - rebuild for R 4
