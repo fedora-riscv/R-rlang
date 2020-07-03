@@ -1,5 +1,5 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
-%bcond_with bootstrap
+%bcond_without bootstrap
 
 %global packname rlang
 %global packver  0.4.6
@@ -7,7 +7,7 @@
 
 Name:             R-%{packname}
 Version:          0.4.6
-Release:          3%{?dist}
+Release:          4%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -23,12 +23,12 @@ Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{packver}.
 
 BuildRequires:    R-devel
 BuildRequires:    tex(latex)
+%if %{without bootstrap}
 BuildRequires:    R-cli
 BuildRequires:    R-crayon
 BuildRequires:    R-glue
 BuildRequires:    R-magrittr
 BuildRequires:    R-methods
-%if %{without bootstrap}
 BuildRequires:    R-pillar
 BuildRequires:    R-rmarkdown
 BuildRequires:    R-testthat >= 2.3.0
@@ -61,8 +61,6 @@ rm -f %{buildroot}%{rlibdir}/R.css
 export LANG=C.UTF-8
 %if %{without bootstrap}
 %{_bindir}/R CMD check %{packname}
-%else
-_R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 %endif
 
 
@@ -82,6 +80,9 @@ _R_CHECK_FORCE_SUGGESTS_=0 %{_bindir}/R CMD check %{packname} --no-tests
 
 
 %changelog
+* Fri Jul  3 2020 José Matos <jamatos@fedoraproject.org> - 0.4.6-4
+- skip check on bootstrap (testthat is required for tests)
+
 * Sun Jun  7 2020 Tom Callaway <spot@fedoraproject.org> - 0.4.6-3
 - bootstrap off
 
