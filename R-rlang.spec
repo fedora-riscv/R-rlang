@@ -2,12 +2,12 @@
 %bcond_with bootstrap
 
 %global packname rlang
-%global packver  0.4.6
+%global packver  0.4.7
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.4.6
-Release:          4%{?dist}
+Version:          0.4.7
+Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -17,7 +17,7 @@ Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{packver}.
 # Here's the R view of the dependencies world:
 # Depends:
 # Imports:
-# Suggests:  R-cli, R-covr, R-crayon, R-glue, R-magrittr, R-methods, R-pillar, R-rmarkdown, R-testthat >= 2.3.0, R-vctrs >= 0.2.3
+# Suggests:  R-cli, R-covr, R-crayon, R-glue, R-magrittr, R-methods, R-pillar, R-rmarkdown, R-testthat >= 2.3.0, R-vctrs >= 0.2.3, R-withr
 # LinkingTo:
 # Enhances:
 
@@ -33,6 +33,7 @@ BuildRequires:    R-pillar
 BuildRequires:    R-rmarkdown
 BuildRequires:    R-testthat >= 2.3.0
 BuildRequires:    R-vctrs >= 0.2.3
+BuildRequires:    R-withr
 %endif
 
 %description
@@ -80,6 +81,9 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Tue Jul 21 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.7-1
+- Update to latest version
+
 * Fri Jul  3 2020 José Matos <jamatos@fedoraproject.org> - 0.4.6-4
 - skip check on bootstrap (testthat is required for tests)
 
