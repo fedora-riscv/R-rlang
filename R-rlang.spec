@@ -7,7 +7,7 @@
 
 Name:             R-%{packname}
 Version:          0.4.7
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -81,6 +81,9 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.7-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
 * Tue Jul 21 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.7-1
 - Update to latest version
 
