@@ -2,12 +2,12 @@
 %bcond_with bootstrap
 
 %global packname rlang
-%global packver  0.4.7
+%global packver  0.4.8
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.4.7
-Release:          3%{?dist}
+Version:          0.4.8
+Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          GPLv3
@@ -81,6 +81,9 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Sat Oct 10 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.8-1
+- Update to latest version (#1886418)
+
 * Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.7-3
 - Second attempt - Rebuilt for
   https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
