@@ -2,11 +2,11 @@
 %bcond_with bootstrap
 
 %global packname rlang
-%global packver  0.4.8
+%global packver  0.4.9
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.4.8
+Version:          0.4.9
 Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
@@ -81,6 +81,9 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Sat Nov 28 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.9-1
+- Update to latest version (#1901765)
+
 * Sat Oct 10 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.8-1
 - Update to latest version (#1886418)
 
