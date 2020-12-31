@@ -14,6 +14,8 @@ License:          MIT
 URL:              https://CRAN.R-project.org/package=%{packname}
 Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{packver}.tar.gz
 Patch0001:        0001-Unbundle-libxxhash.patch
+# https://github.com/r-lib/rlang/pull/1084
+Patch0002:        0002-Add-test-hashes-for-big-endian-machines.patch
 
 # Here's the R view of the dependencies world:
 # Depends:
@@ -50,6 +52,7 @@ system, and core 'Tidyverse' features like tidy evaluation.
 
 pushd %{packname}
 %patch0001 -p1
+%patch0002 -p1
 
 # Don't need coverage; it's not packaged either.
 sed -i 's/covr, //g' DESCRIPTION

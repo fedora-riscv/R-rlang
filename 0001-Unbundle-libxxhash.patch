@@ -1,7 +1,7 @@
 From 1890689ab03ed9cfdc193501c0fc48cb0bab339b Mon Sep 17 00:00:00 2001
 From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
 Date: Wed, 30 Dec 2020 20:07:56 -0500
-Subject: [PATCH] Unbundle libxxhash.
+Subject: [PATCH 1/2] Unbundle libxxhash.
 
 Signed-off-by: Elliott Sales de Andrade <quantum.analyst@gmail.com>
 ---
