@@ -2,36 +2,40 @@
 %bcond_with bootstrap
 
 %global packname rlang
-%global packver  0.4.9
+%global packver  0.4.10
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.4.9
+Version:          0.4.10
 Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
-License:          GPLv3
+License:          MIT
 URL:              https://CRAN.R-project.org/package=%{packname}
 Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{packver}.tar.gz
+Patch0001:        0001-Unbundle-libxxhash.patch
 
 # Here's the R view of the dependencies world:
 # Depends:
-# Imports:
-# Suggests:  R-cli, R-covr, R-crayon, R-glue, R-magrittr, R-methods, R-pillar, R-rmarkdown, R-testthat >= 2.3.0, R-vctrs >= 0.2.3, R-withr
+# Imports:   R-utils
+# Suggests:  R-cli, R-covr, R-crayon, R-glue, R-magrittr, R-methods, R-pak, R-pillar, R-rmarkdown, R-testthat >= 3.0.0, R-vctrs >= 0.2.3, R-withr
 # LinkingTo:
 # Enhances:
 
+BuildRequires:    pkgconfig(libxxhash)
 BuildRequires:    R-devel
 BuildRequires:    tex(latex)
+BuildRequires:    R-utils
 %if %{without bootstrap}
 BuildRequires:    R-cli
 BuildRequires:    R-crayon
 BuildRequires:    R-glue
 BuildRequires:    R-magrittr
 BuildRequires:    R-methods
+BuildRequires:    R-pak
 BuildRequires:    R-pillar
 BuildRequires:    R-rmarkdown
-BuildRequires:    R-testthat >= 2.3.0
+BuildRequires:    R-testthat >= 3.0.0
 BuildRequires:    R-vctrs >= 0.2.3
 BuildRequires:    R-withr
 %endif
@@ -44,8 +48,12 @@ system, and core 'Tidyverse' features like tidy evaluation.
 %prep
 %setup -q -c -n %{packname}
 
+pushd %{packname}
+%patch0001 -p1
+
 # Don't need coverage; it's not packaged either.
-sed -i 's/covr, //g' %{packname}/DESCRIPTION
+sed -i 's/covr, //g' DESCRIPTION
+popd
 
 
 %build
@@ -70,6 +78,7 @@ export LANG=C.UTF-8
 %doc %{rlibdir}/%{packname}/html
 %{rlibdir}/%{packname}/DESCRIPTION
 %doc %{rlibdir}/%{packname}/NEWS.md
+%license %{rlibdir}/%{packname}/LICENSE
 %{rlibdir}/%{packname}/INDEX
 %{rlibdir}/%{packname}/NAMESPACE
 %{rlibdir}/%{packname}/Meta
@@ -81,6 +90,9 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Wed Dec 30 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.10-1
+- Update to latest version (#1911718)
+
 * Sat Nov 28 2020 Elliott Sales de Andrade <quantum.analyst@gmail.com> - 0.4.9-1
 - Update to latest version (#1901765)
 
