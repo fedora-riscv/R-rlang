@@ -1,13 +1,13 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
-%bcond_with bootstrap
+%bcond_without bootstrap
 
 %global packname rlang
-%global packver  0.4.10
+%global packver  0.4.11
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.4.10
-Release:          2%{?dist}
+Version:          0.4.11
+Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          MIT
@@ -52,7 +52,8 @@ system, and core 'Tidyverse' features like tidy evaluation.
 
 pushd %{packname}
 %patch0001 -p1
-%patch0002 -p1
+# Upstream now skips these tests if big endian
+# %%patch0002 -p1
 
 # Don't need coverage; it's not packaged either.
 sed -i 's/covr, //g' DESCRIPTION
@@ -93,6 +94,10 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Mon Jun  7 2021 Tom Callaway <spot@fedoraproject.org> - 0.4.11-1
+- Rebuilt for R 4.1.0
+- update to 0.4.11
+
 * Mon Jan 25 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.10-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
