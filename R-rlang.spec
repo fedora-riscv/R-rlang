@@ -1,5 +1,5 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
-%bcond_without bootstrap
+%bcond_with bootstrap
 
 %global packname rlang
 %global packver  0.4.11
@@ -7,7 +7,7 @@
 
 Name:             R-%{packname}
 Version:          0.4.11
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          MIT
@@ -94,6 +94,9 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Thu Jun 17 2021 Tom Callaway <spot@fedoraproject.org> - 0.4.11-2
+- bootstrap off
+
 * Mon Jun  7 2021 Tom Callaway <spot@fedoraproject.org> - 0.4.11-1
 - Rebuilt for R 4.1.0
 - update to 0.4.11
