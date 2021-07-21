@@ -7,7 +7,7 @@
 
 Name:             R-%{packname}
 Version:          0.4.11
-Release:          2%{?dist}
+Release:          3%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          MIT
@@ -94,6 +94,9 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.11-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Thu Jun 17 2021 Tom Callaway <spot@fedoraproject.org> - 0.4.11-2
 - bootstrap off
 
