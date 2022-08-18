@@ -1,13 +1,13 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
-%bcond_with bootstrap
+%bcond_without bootstrap
 
 %global packname rlang
-%global packver  0.4.11
+%global packver  1.0.4
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          0.4.11
-Release:          5%{?dist}
+Version:          %{packver}
+Release:          1%{?dist}
 Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          MIT
@@ -29,15 +29,19 @@ BuildRequires:    R-devel
 BuildRequires:    tex(latex)
 BuildRequires:    R-utils
 %if %{without bootstrap}
-BuildRequires:    R-cli
+BuildRequires:    R-cli >= 3.1.0
 BuildRequires:    R-crayon
+BuildRequires:    R-fs
 BuildRequires:    R-glue
+BuildRequires:    R-knitr
 BuildRequires:    R-magrittr
 BuildRequires:    R-methods
-BuildRequires:    R-pak
 BuildRequires:    R-pillar
 BuildRequires:    R-rmarkdown
+BuildRequires:    R-stats
 BuildRequires:    R-testthat >= 3.0.0
+BuildRequires:    R-tibble
+BuildRequires:    R-usethis
 BuildRequires:    R-vctrs >= 0.2.3
 BuildRequires:    R-withr
 %endif
@@ -94,6 +98,11 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Thu Aug 18 2022 Tom Callaway <spot@fedoraproject.org> - 1.0.4-1
+- update to 1.0.4
+- rebuild for R 4.2.1
+- bootstrap on
+
 * Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.11-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 

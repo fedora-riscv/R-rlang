@@ -16,8 +16,8 @@ index 4484e88f..4a4d549e 100644
 --- a/src/Makevars
 +++ b/src/Makevars
 @@ -1,4 +1,4 @@
--PKG_CPPFLAGS = -I./lib/
-+PKG_CPPFLAGS = -I./lib/ $(pkgconf --cflags libxxhash)
+-PKG_CPPFLAGS = -I./rlang/
++PKG_CPPFLAGS = -I./rlang/ $(pkgconf --cflags libxxhash)
  PKG_CFLAGS = $(C_VISIBILITY)
  
  lib-files = \
