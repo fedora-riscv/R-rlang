@@ -1,5 +1,5 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
-%bcond_without bootstrap
+%bcond_with bootstrap
 
 %global packname rlang
 %global packver  1.0.4
