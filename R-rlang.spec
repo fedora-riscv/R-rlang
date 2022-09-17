@@ -2,7 +2,7 @@
 %bcond_with bootstrap
 
 %global packname rlang
-%global packver  1.0.4
+%global packver  1.0.5
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
@@ -12,10 +12,9 @@ Summary:          Functions for Base Types and Core R and 'Tidyverse' Features
 
 License:          MIT
 URL:              https://CRAN.R-project.org/package=%{packname}
-Source0:          https://cran.r-project.org/src/contrib/%{packname}_%{packver}.tar.gz
+Source0:          %{url}&version=%{version}#/%{packname}_%{version}.tar.gz
+
 Patch0001:        0001-Unbundle-libxxhash.patch
-# https://github.com/r-lib/rlang/pull/1084
-Patch0002:        0002-Add-test-hashes-for-big-endian-machines.patch
 
 # Here's the R view of the dependencies world:
 # Depends:
@@ -56,8 +55,6 @@ system, and core 'Tidyverse' features like tidy evaluation.
 
 pushd %{packname}
 %patch0001 -p1
-# Upstream now skips these tests if big endian
-# %%patch0002 -p1
 
 # Don't need coverage; it's not packaged either.
 sed -i 's/covr, //g' DESCRIPTION
@@ -98,6 +95,9 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Sat Sep 17 2022 Ali Erdinc Koroglu <aekoroglu@fedoraproject.org> - 1.0.5-1
+- Update to 1.0.5 (RHBZ #2015338)
+
 * Thu Aug 18 2022 Tom Callaway <spot@fedoraproject.org> - 1.0.4-1
 - update to 1.0.4
 - rebuild for R 4.2.1
