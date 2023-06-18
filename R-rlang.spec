@@ -1,5 +1,5 @@
 # When we are bootstrapping, we drop some dependencies, and/or build time tests.
-%bcond_with bootstrap
+%bcond_without bootstrap
 
 %global packname rlang
 %global packver  1.0.6
@@ -95,6 +95,9 @@ export LANG=C.UTF-8
 
 
 %changelog
+* Sun Jun 18 2023 Liu Yang <Yang.Liu.sn@gmail.com> - 1.0.6-2~bootstrap
+- Bootstrap for Fedora 38 riscv64 build.
+
 * Wed Jan 18 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.6-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
